@@ -2,7 +2,6 @@ package com.wipro.hackstreetgirls.smartmeterusage.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,9 +18,7 @@ import lombok.Data;
 public class CompanyEntity {
     @Id
     @Enumerated(EnumType.STRING)
-    @Column(name = "company")
     private CompanyEnum company;
-
-    @Column(name = "pence_per_meter")
-    private BigDecimal price;
+    private BigDecimal waterCost;
+    private BigDecimal wastewaterCost;
 }

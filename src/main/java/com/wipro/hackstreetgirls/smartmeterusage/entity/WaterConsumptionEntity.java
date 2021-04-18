@@ -1,6 +1,5 @@
 package com.wipro.hackstreetgirls.smartmeterusage.entity;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,12 +10,11 @@ import lombok.Data;
 @Entity
 @Table(name = "water_consumer")
 @Data
-public class WaterConsumer {
-
+public class WaterConsumptionEntity {
     @Id
-    @Column(name = "name")
-    private String name;
+    @Column(name = "appliance")
+    private String appliance;
 
-    @Column(name = "consumption_per_use")
+    @Column(name = "consumption")
     private float consumption;
 }

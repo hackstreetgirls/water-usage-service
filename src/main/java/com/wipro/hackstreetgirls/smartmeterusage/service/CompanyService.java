@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.wipro.hackstreetgirls.smartmeterusage.entity.CompanyEntity;
 import com.wipro.hackstreetgirls.smartmeterusage.enums.CompanyEnum;
+import com.wipro.hackstreetgirls.smartmeterusage.exception.CompanyNotFoundException;
 import com.wipro.hackstreetgirls.smartmeterusage.repository.CompanyRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,27 @@ public class CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
 
-    public BigDecimal getPrice(CompanyEnum company){
-        Optional<CompanyEntity> optionalCompany = companyRepository.findByCompany(company);
-        if(optionalCompany.isPresent()){
-            return optionalCompany.get().getPrice();
+    public BigDecimal getWaterCost(CompanyEnum company){
+        Optional<CompanyEntity> optionalPrice = companyRepository.findByCompany(company);
+        
+        if(optionalPrice.isPresent()){
+            return optionalPrice.get().getWaterCost();
         }
 
         else{
-            return new BigDecimal("1.00");
+            throw new CompanyNotFoundException(company.name());
+        }
+    }
+
+    public BigDecimal getWastewaterCost(CompanyEnum company){
+        Optional<CompanyEntity> optionalPrice = companyRepository.findByCompany(company);
+        
+        if(optionalPrice.isPresent()){
+            return optionalPrice.get().getWastewaterCost();
+        }
+
+        else{
+            throw new CompanyNotFoundException(company.name());
         }
     }
 }

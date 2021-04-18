@@ -10,5 +10,6 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 @RepositoryRestController
 public interface CompanyRepository extends JpaRepository<CompanyEntity, CompanyEnum>{
+    
     Optional<CompanyEntity> findByCompany(CompanyEnum company);
 }
